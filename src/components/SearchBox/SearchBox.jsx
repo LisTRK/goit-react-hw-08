@@ -1,17 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux';
-import css from './SearchBox.module.css';
-import { changeFilter, selectNameFilter } from '../../redux/filtersSlice';
+import { selectFilter } from '../../redux/filters/selectors';
+import { changeFilter } from '../../redux/filters/slice';
 import { useDebounce } from 'use-debounce';
 import { useEffect, useState } from 'react';
+import css from './SearchBox.module.css';
 
-export default function SearchBox() {
-  const queryLocation = useSelector(selectNameFilter);
-  const [query, setQuery] = useState(queryLocation);
-  const [debounce] = useDebounce(query, 1500);
+const SearchBox = () => {
   const dispatch = useDispatch();
+  const value = useSelector(selectFilter);
+  const [query, setQuery] = useState(value);
+  const [debounce] = useDebounce(query, 1500);
 
-  const inputChange = (event) => {
-    setQuery(event.target.value);
+  const handleChange = (e) => {
+    setQuery(e.target.value);
   };
 
   useEffect(() => {
@@ -19,15 +20,19 @@ export default function SearchBox() {
   }, [debounce]);
 
   return (
-    <div className={css.searchBox}>
-      <label htmlFor="searchBox">Find contacts by name</label>
-      <input
-        type="text"
-        value={query}
-        onChange={inputChange}
-        id="searchBox"
-        autoFocus
-      />
-    </div>
+    <section className={css.sectionSearchBox}>
+      <div className="container">
+        <h2>Find contacts</h2>
+        <input
+          className={css.inputName}
+          type="text"
+          value={query}
+          onChange={handleChange}
+          placeholder="Search contacts"
+        />
+      </div>
+    </section>
   );
-}
+};
+
+export default SearchBox;

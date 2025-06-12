@@ -1,60 +1,57 @@
-.list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex-basis: 100%;
-  gap: 8px;
-  width: 395px;
-  padding: 0;
+.sectionContacts {
+  padding: 10px 0;
 }
 
-@media only screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
+  .sectionContacts {
+    padding: 20px 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .sectionContacts {
+    padding: 30px 0;
+  }
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  padding: 20px 30px;
+}
+
+@media screen and (min-width: 768px) {
   .list {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    width: 700px;
+    justify-content: center;
+  }
+
+  .item {
+    flex-basis: calc((100% - 40px) / 2);
   }
 }
 
-@media only screen and (min-width: 1240px) {
+@media screen and (min-width: 1280px) {
   .list {
-    width: 1240px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
   }
-}
 
-.card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px;
-  width: 100%;
-  border: 1px solid #646cff;
-  border-radius: 10px;
-  transition: border-color 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-@media only screen and (min-width: 768px) {
-  .card {
-    width: calc((100% - 8px) / 2);
+  .item {
+    flex-basis: calc((100% - 60px) / 3);
   }
-}
-@media only screen and (min-width: 1440px) {
-  .card {
-    width: calc((100% - 2 * 8px) / 3);
-  }
-}
-.card:hover,
-.card:focus {
-  border-color: #888cdf;
-}
-
-.empty {
-  padding: 8px;
-  margin: 0 auto;
-  max-width: 405px;
-  margin-top: 80px;
-  background-color: #e2e2e6;
-  font-size: 20px;
-  border-radius: 20px;
 }
